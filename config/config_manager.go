@@ -32,6 +32,10 @@ func (tm *configManager) Init() {
 	} else {
 		tm.dbPath = dbPath
 	}
+
+	if tm.ConnectToRabbit() {
+		tm.RabbitMQManager.InitConnection(tm.RabbitURL())
+	}
 }
 
 func (tm *configManager) DBPath() string {

@@ -21,7 +21,7 @@ var upgrader = websocket.Upgrader{
 func StartWsTemperatureObserver() *observer.Observer {
 	observer := config.TemperaturearchiveConfig().InitObserver()
 	observer.DeclareTopicExchange(crosscutting.TopicMeasurements.String())
-	observer.BindQueue(observer.Queue, "#", crosscutting.TopicMeasurements.String())
+	observer.BindQueue(observer.Queue, crosscutting.RoutingKeyTemperatureMeasurement.String(), crosscutting.TopicMeasurements.String())
 	return observer
 }
 
@@ -39,9 +39,8 @@ func HandleWebsocket(c echo.Context) error {
 	defer observer.Channel.Close()
 
 	states := make(chan SocketState)
-
 	go readMessagesFromClient(conn, states)
-	go writeMessagesToClient(conn, observer, states)
+	go communicateWithClient(conn, observer, states)
 
 	for {
 		data := <-states
@@ -62,7 +61,11 @@ func readMessagesFromClient(conn *websocket.Conn, c chan SocketState) {
 		var websocketEvent WebSocketEvent
 		_, msg, err := conn.ReadMessage()
 		err = json.Unmarshal(msg, &websocketEvent)
-		if err != nil || websocketEvent.Close {
+
+		if err != nil {
+			websocketEvent.Close = true
+		}
+		if websocketEvent.Close {
 			c <- CLOSED
 			return
 		}
@@ -70,7 +73,7 @@ func readMessagesFromClient(conn *websocket.Conn, c chan SocketState) {
 	}
 }
 
-func writeMessagesToClient(ws *websocket.Conn, observer *observer.Observer, c chan SocketState) {
+func communicateWithClient(ws *websocket.Conn, observer *observer.Observer, c chan SocketState) {
 
 	deliveries := observer.Observe()
 
@@ -85,8 +88,6 @@ func writeMessagesToClient(ws *websocket.Conn, observer *observer.Observer, c ch
 		if err != nil {
 			c <- CLOSED
 			return
-		} else {
-			c <- RECEIVING
 		}
 	}
 
