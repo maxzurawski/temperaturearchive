@@ -45,6 +45,7 @@ func HandleWebsocket(c echo.Context) error {
 
 	for {
 		data := <-states
+		// NOTE: until go-channel does not receive CLOSED state -> wait for values on the channel
 		if data == CLOSED {
 			break
 		}
@@ -55,6 +56,8 @@ func HandleWebsocket(c echo.Context) error {
 }
 
 func readMessagesFromClient(conn *websocket.Conn, c chan SocketState) {
+
+	// NOTE: until client does not send WebSocketEvent.Close -> assume websocket should stay opened
 	for {
 		var websocketEvent WebSocketEvent
 		_, msg, err := conn.ReadMessage()
@@ -71,6 +74,8 @@ func writeMessagesToClient(ws *websocket.Conn, observer *observer.Observer, c ch
 
 	deliveries := observer.Observe()
 
+	// NOTE: Until there are messages in temperature measurement/queue is not closed -> observe queue
+	// and send RefreshStateEvent.Source = 'temperature' to client
 	for range deliveries {
 		event := RefreshStateEvent{
 			Source: Temperature.String(),
