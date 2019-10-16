@@ -33,3 +33,7 @@ func (tm *configManager) Init() {
 		tm.dbPath = dbPath
 	}
 }
+
+func (tm *configManager) DBPath() string {
+	return tm.dbPath
+}
