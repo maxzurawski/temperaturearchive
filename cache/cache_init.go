@@ -6,18 +6,17 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/google/uuid"
 	"github.com/xdevices/temperaturearchive/config"
 	"github.com/xdevices/temperaturearchive/publishers"
 )
 
-func InitSensorsCache() error {
+func InitSensorsCache(processId string) error {
 	proxy := config.TemperaturearchiveConfig().ProxyService()
 	url := fmt.Sprintf("%s/api/register/cachesensors/", proxy)
 	response, err := http.Get(url)
 	if err != nil {
 		publishers.Logger().Error(
-			uuid.New().String(),
+			processId,
 			"",
 			fmt.Sprintf("could not obtain sensors"),
 			err.Error())
@@ -29,7 +28,7 @@ func InitSensorsCache() error {
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		publishers.Logger().Error(
-			uuid.New().String(),
+			processId,
 			"",
 			fmt.Sprintf("could not read response body. message: [%s]", string(body)),
 			err.Error())
@@ -38,7 +37,7 @@ func InitSensorsCache() error {
 
 	if response.StatusCode == http.StatusNoContent {
 		publishers.Logger().Info(
-			uuid.New().String(),
+			processId,
 			"",
 			fmt.Sprintf("no sensors registered yet. sensors cache is empty"))
 		SensorsCache = &Cache{}
@@ -48,7 +47,7 @@ func InitSensorsCache() error {
 	err = json.Unmarshal(body, &sensors)
 	if err != nil {
 		publishers.Logger().Error(
-			uuid.New().String(),
+			processId,
 			"",
 			fmt.Sprintf("could not decode cached sensors"),
 			err.Error())
@@ -56,7 +55,7 @@ func InitSensorsCache() error {
 	}
 
 	publishers.Logger().Info(
-		uuid.New().String(),
+		processId,
 		"",
 		fmt.Sprintf("resetting sensors cache"))
 	SensorsCache = &Cache{}

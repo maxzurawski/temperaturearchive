@@ -1,15 +1,19 @@
 package main
 
 import (
+	"github.com/google/uuid"
 	"github.com/labstack/echo"
 	"github.com/xdevices/temperaturearchive/cache"
 	"github.com/xdevices/temperaturearchive/config"
 	"github.com/xdevices/temperaturearchive/dbprovider"
 	"github.com/xdevices/temperaturearchive/handlers"
+	"github.com/xdevices/temperaturearchive/observer"
 	"github.com/xdevices/temperaturearchive/service"
 )
 
 func main() {
+
+	go observer.ObserveSensorChanges()
 
 	e := echo.New()
 	e.GET("/", handlers.HandleFind)
@@ -25,6 +29,6 @@ func init() {
 	dbprovider.InitDbManager()
 	service.Init()
 
-	_ = cache.InitSensorsCache()
+	_ = cache.InitSensorsCache(uuid.New().String())
 
 }
