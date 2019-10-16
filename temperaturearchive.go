@@ -6,14 +6,18 @@ import (
 	"github.com/xdevices/temperaturearchive/cache"
 	"github.com/xdevices/temperaturearchive/config"
 	"github.com/xdevices/temperaturearchive/dbprovider"
+	"github.com/xdevices/temperaturearchive/dto"
 	"github.com/xdevices/temperaturearchive/handlers"
 	"github.com/xdevices/temperaturearchive/observer"
+	"github.com/xdevices/temperaturearchive/processors"
+	"github.com/xdevices/temperaturearchive/publishers"
 	"github.com/xdevices/temperaturearchive/service"
 )
 
 func main() {
 
 	go observer.ObserveSensorChanges()
+	go observer.TemperatureObserver([]func(dto.MeasurementDTO){processors.NotifierProcessor, processors.ArchiveProcessor})
 
 	e := echo.New()
 	e.GET("/", handlers.HandleFind)
@@ -28,6 +32,9 @@ func init() {
 
 	dbprovider.InitDbManager()
 	service.Init()
+
+	publishers.InitLogger()
+	publishers.InitNotifier()
 
 	_ = cache.InitSensorsCache(uuid.New().String())
 
