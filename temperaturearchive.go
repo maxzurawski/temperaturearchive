@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/labstack/echo"
+	"github.com/xdevices/temperaturearchive/cache"
 	"github.com/xdevices/temperaturearchive/config"
 	"github.com/xdevices/temperaturearchive/dbprovider"
 	"github.com/xdevices/temperaturearchive/handlers"
@@ -23,5 +24,7 @@ func init() {
 
 	dbprovider.InitDbManager()
 	service.Init()
+
+	_ = cache.InitSensorsCache()
 
 }

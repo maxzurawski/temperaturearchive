@@ -12,6 +12,7 @@ type configManager struct {
 	*config.Manager
 	dbPath string
 	rabbit.RabbitMQManager
+	proxyService string
 }
 
 var instance *configManager
@@ -33,6 +34,12 @@ func (tm *configManager) Init() {
 		tm.dbPath = dbPath
 	}
 
+	if proxyService, err := os.LookupEnv("PROXY_SERVICE"); !err {
+		tm.proxyService = "http://localhost:8000/api"
+	} else {
+		tm.proxyService = proxyService
+	}
+
 	if tm.ConnectToRabbit() {
 		tm.RabbitMQManager.InitConnection(tm.RabbitURL())
 	}
@@ -40,4 +47,8 @@ func (tm *configManager) Init() {
 
 func (tm *configManager) DBPath() string {
 	return tm.dbPath
+}
+
+func (tm *configManager) ProxyService() string {
+	return tm.proxyService
 }
