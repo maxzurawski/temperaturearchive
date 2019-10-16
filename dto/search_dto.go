@@ -1,4 +1,4 @@
-package crosscutting
+package dto
 
 import "time"
 
