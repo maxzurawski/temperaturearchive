@@ -21,6 +21,7 @@ type DBManager interface {
 
 	// mappers
 	MapToEntity(dto dto.MeasurementDTO) (measurement *model.Measurement)
+	MapToDto(measurement *model.Measurement) dto.MeasurementDTO
 }
 
 var Mgr DBManager
