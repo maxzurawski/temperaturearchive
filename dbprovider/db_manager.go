@@ -18,6 +18,9 @@ type DBManager interface {
 	Find(searchDTO dto.SearchDTO) ([]model.Measurement, error)
 	Save(measurement dto.MeasurementDTO) (*model.Measurement, error)
 	GetDb() *gorm.DB
+
+	// mappers
+	MapToEntity(dto dto.MeasurementDTO) (measurement *model.Measurement)
 }
 
 var Mgr DBManager
