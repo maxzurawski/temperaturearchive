@@ -4,6 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/google/uuid"
+	"github.com/xdevices/temperaturearchive/publishers"
+
 	"github.com/xdevices/utilities/rabbit/crosscutting"
 
 	"github.com/gorilla/websocket"
@@ -31,6 +34,7 @@ func HandleWebsocket(c echo.Context) error {
 	conn, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
 
 	if err != nil {
+		publishers.Logger().Error(uuid.New().String(), "", "websocket upgrade failed", err.Error())
 		log.Error(err.Error())
 	}
 	defer conn.Close()
