@@ -7,6 +7,8 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/xdevices/utilities/resterror"
+
 	"github.com/xdevices/temperaturearchive/service"
 
 	"github.com/xdevices/temperaturearchive/publishers"
@@ -115,7 +117,7 @@ func HandleFind(c echo.Context) error {
 			"",
 			fmt.Sprintf("problem during searching of measurements for searchdto: [%s]", string(bytes)),
 			err.Error())
-		return c.JSON(http.StatusInternalServerError, err)
+		return c.JSON(http.StatusInternalServerError, resterror.New(err.Error()))
 	}
 
 	if len(result) == 0 {
