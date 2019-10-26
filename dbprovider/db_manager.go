@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/maxzurawski/temperaturearchive/config"
+	"github.com/xdevices/temperaturearchive/config"
 
 	"github.com/jinzhu/gorm"
-	"github.com/maxzurawski/temperaturearchive/dto"
-	"github.com/maxzurawski/temperaturearchive/model"
-	"github.com/maxzurawski/utilities/db"
+	"github.com/xdevices/temperaturearchive/dto"
+	"github.com/xdevices/temperaturearchive/model"
+	"github.com/xdevices/utilities/db"
 
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )

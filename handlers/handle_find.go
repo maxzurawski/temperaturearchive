@@ -7,16 +7,16 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/maxzurawski/utilities/resterror"
+	"github.com/xdevices/utilities/resterror"
 
-	"github.com/maxzurawski/temperaturearchive/service"
+	"github.com/xdevices/temperaturearchive/service"
 
-	"github.com/maxzurawski/temperaturearchive/publishers"
+	"github.com/xdevices/temperaturearchive/publishers"
 
 	"github.com/google/uuid"
 	"github.com/labstack/echo"
-	"github.com/maxzurawski/temperaturearchive/dto"
-	"github.com/maxzurawski/utilities/stringutils"
+	"github.com/xdevices/temperaturearchive/dto"
+	"github.com/xdevices/utilities/stringutils"
 )
 
 func HandleFind(c echo.Context) error {

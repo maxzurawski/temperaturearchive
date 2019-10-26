@@ -6,11 +6,11 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/maxzurawski/temperaturearchive/config"
-	"github.com/maxzurawski/temperaturearchive/dto"
-	"github.com/maxzurawski/temperaturearchive/publishers"
-	"github.com/maxzurawski/utilities/rabbit/crosscutting"
-	"github.com/maxzurawski/utilities/rabbit/domain"
+	"github.com/xdevices/temperaturearchive/config"
+	"github.com/xdevices/temperaturearchive/dto"
+	"github.com/xdevices/temperaturearchive/publishers"
+	"github.com/xdevices/utilities/rabbit/crosscutting"
+	"github.com/xdevices/utilities/rabbit/domain"
 )
 
 func TemperatureObserver(processors []func(measurementDTO dto.MeasurementDTO)) {

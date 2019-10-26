@@ -4,14 +4,14 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/maxzurawski/temperaturearchive/cache"
+	"github.com/xdevices/temperaturearchive/cache"
 
 	"github.com/google/uuid"
 	"github.com/labstack/gommon/log"
-	"github.com/maxzurawski/temperaturearchive/config"
-	"github.com/maxzurawski/temperaturearchive/publishers"
-	"github.com/maxzurawski/utilities/rabbit/crosscutting"
-	"github.com/maxzurawski/utilities/rabbit/domain"
+	"github.com/xdevices/temperaturearchive/config"
+	"github.com/xdevices/temperaturearchive/publishers"
+	"github.com/xdevices/utilities/rabbit/crosscutting"
+	"github.com/xdevices/utilities/rabbit/domain"
 )
 
 func ObserveSensorChanges() {

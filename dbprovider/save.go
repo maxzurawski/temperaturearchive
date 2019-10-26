@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/maxzurawski/temperaturearchive/dto"
-	"github.com/maxzurawski/temperaturearchive/model"
-	"github.com/maxzurawski/utilities/stringutils"
+	"github.com/xdevices/temperaturearchive/dto"
+	"github.com/xdevices/temperaturearchive/model"
+	"github.com/xdevices/utilities/stringutils"
 )
 
 func (mgr *manager) Save(dto dto.MeasurementDTO) (*model.Measurement, error) {

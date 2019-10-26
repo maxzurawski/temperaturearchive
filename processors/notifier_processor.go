@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/maxzurawski/temperaturearchive/cache"
-	"github.com/maxzurawski/temperaturearchive/dto"
-	"github.com/maxzurawski/temperaturearchive/publishers"
-	"github.com/maxzurawski/utilities/stringutils"
+	"github.com/xdevices/temperaturearchive/cache"
+	"github.com/xdevices/temperaturearchive/dto"
+	"github.com/xdevices/temperaturearchive/publishers"
+	"github.com/xdevices/utilities/stringutils"
 )
 
 func NotifierProcessor(dto dto.MeasurementDTO) {
