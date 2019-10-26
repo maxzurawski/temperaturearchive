@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/xdevices/utilities/rabbit/domain"
+	"github.com/maxzurawski/utilities/rabbit/domain"
 
-	"github.com/xdevices/temperaturearchive/config"
-	"github.com/xdevices/utilities/rabbit/crosscutting"
-	"github.com/xdevices/utilities/rabbit/publishing"
-	"github.com/xdevices/utilities/stringutils"
+	"github.com/maxzurawski/temperaturearchive/config"
+	"github.com/maxzurawski/utilities/rabbit/crosscutting"
+	"github.com/maxzurawski/utilities/rabbit/publishing"
+	"github.com/maxzurawski/utilities/stringutils"
 )
 
 type notifier struct {

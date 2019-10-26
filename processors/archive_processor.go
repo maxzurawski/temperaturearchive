@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/xdevices/temperaturearchive/dto"
-	"github.com/xdevices/temperaturearchive/publishers"
-	"github.com/xdevices/temperaturearchive/service"
+	"github.com/maxzurawski/temperaturearchive/dto"
+	"github.com/maxzurawski/temperaturearchive/publishers"
+	"github.com/maxzurawski/temperaturearchive/service"
 )
 
 func ArchiveProcessor(dto dto.MeasurementDTO) {

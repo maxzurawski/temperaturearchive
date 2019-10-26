@@ -5,15 +5,15 @@ import (
 	"net/http"
 
 	"github.com/google/uuid"
-	"github.com/xdevices/temperaturearchive/publishers"
+	"github.com/maxzurawski/temperaturearchive/publishers"
 
-	"github.com/xdevices/utilities/rabbit/crosscutting"
+	"github.com/maxzurawski/utilities/rabbit/crosscutting"
 
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo"
 	"github.com/labstack/gommon/log"
-	"github.com/xdevices/temperaturearchive/config"
-	"github.com/xdevices/utilities/rabbit/observer"
+	"github.com/maxzurawski/temperaturearchive/config"
+	"github.com/maxzurawski/utilities/rabbit/observer"
 )
 
 var upgrader = websocket.Upgrader{
