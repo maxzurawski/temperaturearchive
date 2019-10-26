@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/xdevices/temperaturearchive/publishers"
+	"github.com/maxzurawski/temperaturearchive/publishers"
 
-	"github.com/xdevices/temperaturearchive/dto"
+	"github.com/maxzurawski/temperaturearchive/dto"
 )
 
 func (s *service) SaveMeasurement(dto dto.MeasurementDTO) (*dto.MeasurementDTO, error) {

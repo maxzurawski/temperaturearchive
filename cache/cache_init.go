@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/xdevices/temperaturearchive/config"
-	"github.com/xdevices/temperaturearchive/publishers"
+	"github.com/maxzurawski/temperaturearchive/config"
+	"github.com/maxzurawski/temperaturearchive/publishers"
 )
 
 func InitSensorsCache(processId string) error {

@@ -3,15 +3,15 @@ package main
 import (
 	"github.com/google/uuid"
 	"github.com/labstack/echo"
-	"github.com/xdevices/temperaturearchive/cache"
-	"github.com/xdevices/temperaturearchive/config"
-	"github.com/xdevices/temperaturearchive/dbprovider"
-	"github.com/xdevices/temperaturearchive/dto"
-	"github.com/xdevices/temperaturearchive/handlers"
-	"github.com/xdevices/temperaturearchive/observer"
-	"github.com/xdevices/temperaturearchive/processors"
-	"github.com/xdevices/temperaturearchive/publishers"
-	"github.com/xdevices/temperaturearchive/service"
+	"github.com/maxzurawski/temperaturearchive/cache"
+	"github.com/maxzurawski/temperaturearchive/config"
+	"github.com/maxzurawski/temperaturearchive/dbprovider"
+	"github.com/maxzurawski/temperaturearchive/dto"
+	"github.com/maxzurawski/temperaturearchive/handlers"
+	"github.com/maxzurawski/temperaturearchive/observer"
+	"github.com/maxzurawski/temperaturearchive/processors"
+	"github.com/maxzurawski/temperaturearchive/publishers"
+	"github.com/maxzurawski/temperaturearchive/service"
 )
 
 func main() {

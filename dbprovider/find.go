@@ -1,9 +1,9 @@
 package dbprovider
 
 import (
-	"github.com/xdevices/temperaturearchive/dto"
-	"github.com/xdevices/temperaturearchive/model"
-	"github.com/xdevices/utilities/stringutils"
+	"github.com/maxzurawski/temperaturearchive/dto"
+	"github.com/maxzurawski/temperaturearchive/model"
+	"github.com/maxzurawski/utilities/stringutils"
 )
 
 func (mgr *manager) Find(searchDTO dto.SearchDTO) ([]model.Measurement, error) {

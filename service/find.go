@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/xdevices/temperaturearchive/dto"
+	"github.com/maxzurawski/temperaturearchive/dto"
 )
 
 func (s *service) Find(searchDTO dto.SearchDTO) ([]dto.MeasurementDTO, error) {
