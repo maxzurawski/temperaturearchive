@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/xdevices/temperaturearchive/dbprovider"
-	"github.com/xdevices/temperaturearchive/dto"
+	"github.com/maxzurawski/temperaturearchive/dbprovider"
+	"github.com/maxzurawski/temperaturearchive/dto"
 )
 
 type service struct {

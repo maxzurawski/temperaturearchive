@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/xdevices/utilities/discovery"
+	"github.com/maxzurawski/utilities/discovery"
 )
 
 type EurekaManager struct {

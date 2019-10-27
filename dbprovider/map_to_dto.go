@@ -1,8 +1,8 @@
 package dbprovider
 
 import (
-	"github.com/xdevices/temperaturearchive/dto"
-	"github.com/xdevices/temperaturearchive/model"
+	"github.com/maxzurawski/temperaturearchive/dto"
+	"github.com/maxzurawski/temperaturearchive/model"
 )
 
 func (mgr *manager) MapToDto(measurement *model.Measurement) dto.MeasurementDTO {
