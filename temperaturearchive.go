@@ -17,7 +17,7 @@ import (
 func main() {
 
 	go observer.ObserveSensorChanges()
-	go observer.TemperatureObserver([]func(dto.MeasurementDTO){processors.NotifierProcessor, processors.ArchiveProcessor})
+	go observer.TemperatureObserver([]func(dto.MeasurementDTO){processors.MaxProcessor, processors.MinProcessor, processors.ArchiveProcessor})
 
 	e := echo.New()
 	e.GET("/", handlers.HandleFind)

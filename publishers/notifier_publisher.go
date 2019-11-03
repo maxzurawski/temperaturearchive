@@ -38,7 +38,8 @@ func (n *notifier) PublishToNotifierMax(
 	processId,
 	sensorUuid,
 	max,
-	value string) {
+	value string,
+	transition domain.NotifierTransitions) {
 
 	now := time.Now()
 
@@ -48,6 +49,7 @@ func (n *notifier) PublishToNotifierMax(
 		Service:     config.TemperaturearchiveConfig().ServiceName(),
 		Max:         max,
 		Value:       stringutils.ToMultiString(value),
+		Transition:  transition,
 		PublishedOn: now,
 	}
 
@@ -67,7 +69,8 @@ func (n *notifier) PublishToNotifierMin(
 	processId,
 	sensorUuid,
 	max,
-	value string) {
+	value string,
+	transition domain.NotifierTransitions) {
 
 	now := time.Now()
 
@@ -77,6 +80,7 @@ func (n *notifier) PublishToNotifierMin(
 		Service:     config.TemperaturearchiveConfig().ServiceName(),
 		Max:         max,
 		Value:       stringutils.ToMultiString(value),
+		Transition:  transition,
 		PublishedOn: now,
 	}
 
