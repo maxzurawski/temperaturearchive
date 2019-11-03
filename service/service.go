@@ -12,6 +12,7 @@ type service struct {
 type TemperatureService interface {
 	SaveMeasurement(dto dto.MeasurementDTO) (*dto.MeasurementDTO, error)
 	Find(searchDTO dto.SearchDTO) ([]dto.MeasurementDTO, error)
+	FindLast(amount int, uuid, processid string) ([]dto.MeasurementDTO, error)
 }
 
 var Service TemperatureService
