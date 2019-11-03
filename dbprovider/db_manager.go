@@ -18,6 +18,7 @@ type DBManager interface {
 	Find(searchDTO dto.SearchDTO) ([]model.Measurement, error)
 	Save(measurement dto.MeasurementDTO) (*model.Measurement, error)
 	GetDb() *gorm.DB
+	GetLastEntries(amount int, uuid string) ([]model.Measurement, error)
 
 	// mappers
 	MapToEntity(dto dto.MeasurementDTO) (measurement *model.Measurement)
