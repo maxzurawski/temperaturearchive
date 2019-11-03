@@ -6,4 +6,5 @@ type Sensor struct {
 	Type   string `json:"type"`
 	Max    string `json:"max"`
 	Min    string `json:"min"`
+	Nacta  int    `json:"nacta"`
 }
